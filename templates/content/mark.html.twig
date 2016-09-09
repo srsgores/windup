@@ -12,9 +12,9 @@
  */
 #}
 {% if logged_in %}
-  {% if status is constant('MARK_NEW') %}
-    {{ 'New'|t }}
-  {% elseif status is constant('MARK_UPDATED') %}
-    {{ 'Updated'|t }}
-  {% endif %}
+	{% if status is constant('MARK_NEW') %}
+		{{'New'|t}}
+	{% elseif status is constant('MARK_UPDATED') %}
+		{{'Updated'|t}}
+	{% endif %}
 {% endif %}

@@ -20,17 +20,17 @@
  */
 #}
 {% set attributes_rendered %}
-  {{ attributes }}
+	{{attributes}}
 {% endset %}
 
 {% if attributes_rendered %}
-<span{{ attributes }}>
+<span{{attributes}}>
 {% endif %}
 
-  {%- for item in items -%}
-    {{ item.content }}
-  {%- endfor -%}
+	{%- for item in items -%}
+		{{item.content}}
+	{%- endfor -%}
 
-{% if attributes_rendered %}
+	{% if attributes_rendered %}
 </span>
 {% endif %}

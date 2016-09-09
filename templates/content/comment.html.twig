@@ -64,46 +64,44 @@
  * @see template_preprocess_comment()
  */
 #}
-{%
-  set classes = [
-    'comment',
-    'comment--' ~ commented_entity.getEntityTypeId(),
-    'js-comment',
-    status != 'comment--published' ? status,
-    comment.owner.anonymous ? 'comment--by-anonymous',
-    author_id and author_id == commented_entity.getOwnerId() ? 'comment--by-' ~ commented_entity.getEntityTypeId() ~ '-author'
-  ]
-%}
-<article{{ attributes.addClass(classes) }}>
-  {#
-    Hide the "new" indicator by default, let a piece of JavaScript ask the
-    server which comments are new for the user. Rendering the final "new"
-    indicator here would break the render cache.
-  #}
-  <mark class="hidden" data-comment-timestamp="{{ new_indicator_timestamp }}"></mark>
+{% set classes = [
+'comment',
+'comment--' ~ commented_entity.getEntityTypeId(),
+'js-comment',
+status != 'comment--published' ? status,
+comment.owner.anonymous ? 'comment--by-anonymous',
+author_id and author_id == commented_entity.getOwnerId() ? 'comment--by-' ~ commented_entity.getEntityTypeId() ~ '-author'
+] %}
+<article{{attributes.addClass(classes)}}>
+	{#
+	  Hide the "new" indicator by default, let a piece of JavaScript ask the
+	  server which comments are new for the user. Rendering the final "new"
+	  indicator here would break the render cache.
+	#}
+	<mark class="hidden" data-comment-timestamp="{{new_indicator_timestamp}}"></mark>
 
-  <footer class="comment__footer">
-    <div class="comment__author-image">{{ user_picture }}</div>
-    <p class="comment__meta">{{ submitted }}</p>
+	<footer class="comment__footer">
+		<div class="comment__author-image">{{user_picture}}</div>
+		<p class="comment__meta">{{submitted}}</p>
 
-    {#
-      Indicate the semantic relationship between parent and child comments for
-      accessibility. The list is difficult to navigate in a screen reader
-      without this information.
-    #}
-    {% if parent %}
-      <p class="visually-hidden">{{ parent }}</p>
-    {% endif %}
+		{#
+		  Indicate the semantic relationship between parent and child comments for
+		  accessibility. The list is difficult to navigate in a screen reader
+		  without this information.
+		#}
+		{% if parent %}
+			<p class="visually-hidden">{{parent}}</p>
+		{% endif %}
 
-    {{ permalink }}
-  </footer>
+		{{permalink}}
+	</footer>
 
-  <div{{ content_attributes.addClass('comment__content') }}>
-    {% if title %}
-      {{ title_prefix }}
-      <h3{{ title_attributes.addClass('comment__title') }}>{{ title }}</h3>
-      {{ title_suffix }}
-    {% endif %}
-    {{ content }}
-  </div>
+	<div{{content_attributes.addClass('comment__content')}}>
+		{% if title %}
+			{{title_prefix}}
+			<h3{{title_attributes.addClass('comment__title')}}>{{title}}</h3>
+			{{title_suffix}}
+		{% endif %}
+		{{content}}
+	</div>
 </article>

@@ -11,15 +11,15 @@
  */
 #}
 {% set attributes_rendered %}
-  {{ attributes }}
+	{{attributes}}
 {% endset %}
 
 {% if attributes_rendered %}
-<div{{ attributes_rendered }}>
-{% endif %}
+<div{{attributes_rendered}}>
+	{% endif %}
 
-  {{ content }}
+	{{content}}
 
-{% if attributes_rendered %}
+	{% if attributes_rendered %}
 </div>
 {% endif %}

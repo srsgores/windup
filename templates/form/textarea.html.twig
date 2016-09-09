@@ -15,15 +15,15 @@
 #}
 
 {% set wrapper_attributes_rendered %}
-  {{ wrapper_attributes }}
+	{{wrapper_attributes}}
 {% endset %}
 
 {% if wrapper_attributes_rendered %}
-<div{{ wrapper_attributes }}>
-{% endif %}
+<div{{wrapper_attributes}}>
+	{% endif %}
 
-  <textarea{{ attributes }}>{{ value }}</textarea>
+	<textarea{{attributes}}>{{value}}</textarea>
 
-{% if wrapper_attributes_rendered %}
+	{% if wrapper_attributes_rendered %}
 </div>
 {% endif %}

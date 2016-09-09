@@ -14,19 +14,19 @@
 #}
 {% if content %}
 
-  {% set attributes_string %}
-    {{ attributes }}
-  {% endset %}
+	{% set attributes_string %}
+		{{attributes}}
+	{% endset %}
 
-  {% if attributes_string %}
-  <div{{ attributes_string }}>
-  {% endif %}
+	{% if attributes_string %}
+		<div{{attributes_string}}>
+	{% endif %}
 
-    {{ content }}
+	{{content}}
 
-  {% if attributes_string %}
-  </div>
-  {% endif %}
+	{% if attributes_string %}
+		</div>
+	{% endif %}
 
 {% endif %}
 

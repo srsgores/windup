@@ -37,40 +37,40 @@
  */
 #}
 {% set attributes_rendered %}
-  {{ attributes }}
+	{{attributes}}
 {% endset %}
 
 {% if label_hidden %}
-  {% if multiple %}
-    {% if attributes_rendered %}
-      <div{{ attributes }}>
-    {% endif %}
-      {% for item in items %}
-        <div{{ item.attributes }}>{{ item.content }}</div>
-      {% endfor %}
-    {% if attributes_rendered %}
-      </div>
-    {% endif %}
-  {% else %}
-    {% for item in items %}
-      <div{{ attributes }}>{{ item.content }}</div>
-    {% endfor %}
-  {% endif %}
+	{% if multiple %}
+		{% if attributes_rendered %}
+			<div{{attributes}}>
+		{% endif %}
+		{% for item in items %}
+			<div{{item.attributes}}>{{item.content}}</div>
+		{% endfor %}
+		{% if attributes_rendered %}
+			</div>
+		{% endif %}
+	{% else %}
+		{% for item in items %}
+			<div{{attributes}}>{{item.content}}</div>
+		{% endfor %}
+	{% endif %}
 {% else %}
-  {% if attributes_rendered %}
-    <div{{ attributes }}>
-  {% endif %}
-    <div{{ title_attributes }}>{{ label }}</div>
-    {% if multiple %}
-      <div>
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if multiple %}
-      </div>
-    {% endif %}
-  {% if attributes_rendered %}
-    </div>
-  {% endif %}
+	{% if attributes_rendered %}
+		<div{{attributes}}>
+	{% endif %}
+	<div{{title_attributes}}>{{label}}</div>
+	{% if multiple %}
+	<div>
+{% endif %}
+	{% for item in items %}
+		<div{{item.attributes}}>{{item.content}}</div>
+	{% endfor %}
+	{% if multiple %}
+	</div>
+{% endif %}
+	{% if attributes_rendered %}
+		</div>
+	{% endif %}
 {% endif %}
