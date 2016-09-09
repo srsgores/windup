@@ -1,0 +1,18 @@
+drupal8_assendion_theme.screen-small-min:
+  label: screen-small-min
+  mediaQuery: "all and (min-width: 48em)"
+  weight: 1
+  multipliers:
+    - 1x
+drupal8_assendion_theme.screen-medium-min:
+  label: screen-medium-min
+  mediaQuery: "all and (min-width: 62em)"
+  weight: 1
+  multipliers:
+    - 1x
+drupal8_assendion_theme.screen-large-min:
+  label: screen-large-min
+  mediaQuery: "all and (min-width: 75em)"
+  weight: 1
+  multipliers:
+    - 1x
