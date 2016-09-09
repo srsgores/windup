@@ -1,5 +1,5 @@
 files:
-  include: '**/*.s+(a|c)ss'
+  include: "**/*.s+(a|c)ss"
 options:
   formatter: stylish
   merge-default-rules: false
@@ -40,8 +40,8 @@ rules:
     - 2
     - convention: hyphenatedbem
   indentation:
-    - 2
-    - size: 2
+    - 4
+    - size: tab
   leading-zero:
     - 2
     - include: true
@@ -53,7 +53,6 @@ rules:
   nesting-depth:
     - 2
     - max-depth: 4
-  no-color-keyword: 2
   no-color-literals: 2
   no-css-comments: 2
   no-debug: 2
@@ -76,14 +75,14 @@ rules:
   placeholder-in-extend: 2
   placeholder-name-format:
     - 2
-    - convention: hyphenatedbem
+    - convention: snakecase
   property-sort-order:
-    - 2
-    - order: 'concentric'
+    - 0
+    - order: "concentric"
     - ignore-custom-properties: false
   quotes:
     - 2
-    - style: single
+    - style: double
   shorthand-values: 2
   single-line-per-selector: 2
   space-after-bang:
@@ -108,5 +107,5 @@ rules:
   variable-name-format:
     - 2
     - allow-leading-underscore: true
-      convention: hyphenatedlowercase
+      convention: camelcase
   zero-unit: 2
