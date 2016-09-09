@@ -1,62 +1,62 @@
-$adminTabsBorderColour: #cfcfcf !default;
-$adminTabsLinkColour: #efefef !default;
-$adminTabsLinkActiveHoverColour: #fff !default;
-$adminTabsLinkHoverColour: #e5e5e5 !default;
-$adminTabsBorderWidth: 1px !default;
+$adminBorderColour: #cfcfcf !default;
+$adminLinkColour: #efefef !default;
+$adminLinkHoverColour: #fff !default;
+$adminLinkSecondaryHoverColour: #e5e5e5;
+$adminBorderWidth: 1px !default;
 
 .admin-tabs {
-  &--primary {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-flow: flex-start;
-    margin: 0 0 0.5em;
-    padding: 0.5em 1em 0 0.5em;
+	&--primary {
+		position: relative;
+		display: flex;
+		flex-wrap: nowrap;
+		flex-flow: flex-start;
+		margin: 0 0 0.5em;
+		padding: 0.5em 1em 0 0.5em;
 
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: 1px;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 0;
-      border-bottom: $adminTabsBorderWidth solid $adminTabsBorderColour;
-    }
-  }
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 1px;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 0;
+			border-bottom: $adminBorderWidth solid $adminBorderColour;
+		}
+	}
 
-  &__tab {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+	&__tab {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 
-    &:last-child {
-      .admin-tabs__link {
-        border-right-width: $adminTabsBorderWidth;
-      }
-    }
-  }
+		&:last-child {
+			.admin-tabs__link {
+				border-right-width: $adminBorderWidth;
+			}
+		}
+	}
 
-  &__link {
-    display: block;
-    padding: 0.5em 0.8em;
-    border: $adminTabsBorderWidth solid $adminTabsBorderColour;
-    border-right-width: 0;
-    font-weight: bold;
-    background: $adminTabsLinkColour;
+	&__link {
+		display: block;
+		padding: 0.5em 0.8em;
+		border: $adminBorderWidth solid $adminBorderColour;
+		border-right-width: 0;
+		font-weight: bold;
+		background: $adminLinkColour;
 
-    &.is-active {
-      border-bottom-width: 0;
+		&.is-active {
+			border-bottom-width: 0;
 
-      &,
-      &:hover {
-        background: $adminTabsLinkActiveHoverColour;
-      }
+			&,
+			&:hover {
+				background: $adminLinkHoverColour;
+			}
 
-    }
+		}
 
-    &:hover {
-      background: $adminTabsLinkHoverColour;
-    }
-  }
+		&:hover {
+			background: $adminLinkSecondaryHoverColour;
+		}
+	}
 }
