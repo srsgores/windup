@@ -6,11 +6,72 @@ screenshot: screenshot.png
 package: Custom
 core: 8.x
 libraries:
-  - windup/bower
-  - windup/global
+    - windup/bower
+    - windup/global
 stylesheets-remove:
-  - core/assets/vendor/normalize-css/normalize.css
-  - core/modules/system/css/system.theme.css
-  - core/modules/system/css/system.menus.css
+    - core/assets/vendor/normalize-css/normalize.css
+    - core/modules/system/css/system.theme.css
+    - core/modules/system/css/system.menus.css
 regions:
-  content: Content # the content region is required
+    header: "Header"
+    primary_menu: "Primary menu"
+    secondary_menu: "Secondary menu"
+    social_icon: "Social Icon"
+    slideshow: "Slideshow"
+    main_title: "Main Title"
+    video: "Video"
+    top_first: "Top first"
+    top_second: "Top second"
+    top_third: "Top third"
+    top_fourth: "Top fourth"
+    top_content_first: "Top content first"
+    top_content_second: "Top content second"
+    top_content_third: "Top content third"
+    top_content_fourth: "Top content 4"
+    line_first: "Line first"
+    line_second: "Line second"
+    line_third: "Line third"
+    line4: "Line 4"
+    top_content: "Top Content"
+    feature_first: "First feature"
+    feature_second: "Second feature"
+    feature_third: "Third feature"
+    feature_fourth: "Fourth feature"
+    contenttop_first: "Contenttop first"
+    contenttop_second: "Contenttop second"
+    contenttop_third: "Contenttop third"
+    contenttop_fourth: "Contenttop fourth"
+    sidebar_first: "Sidebar first"
+    content: "Content"
+    sidebar_second: "Sidebar second"
+    contentbottom_first: "Contentbottom first"
+    contentbottom_second: "Contentbottom second"
+    contentbottom_third: "Contentbottom third"
+    contentbottom4: "Contentbottom 4"
+    bottom_line_first: "Bottom Line first"
+    bottom_line_second: "Bottom Line second"
+    bottom_line_third: "Bottom Line third"
+    bottom_line_fourth: "Bottom Line 4"
+    bottom_first: "Bottom first"
+    bottom_second: "Bottom second"
+    bottom_third: "Bottom third"
+    bottom4: "Bottom 4"
+    last_first: "Last first"
+    last_second: "Last second"
+    last_third: "Last third"
+    last4: "Last 4"
+    help: "Help"
+    page_top: "Page top"
+    page_bottom: "Page bottom"
+    messages: "Messages"
+    featured: "Featured"
+    breadcrumb: "Breadcrumb"
+    panel_first: "First panel"
+    panel_second: "Second panel"
+    panel_third: "Third panel"
+    panel_fourth: "Fourth panel"
+    footer: "Footer"
+    footer_second: "Footer second"
+    footer_third: "Footer third"
+    footer_fourth: "Footer fourth"
+    footer_fifth: "Footer fifth"
