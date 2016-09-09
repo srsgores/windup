@@ -20,12 +20,12 @@
  * @see template_preprocess_toolbar()
  */
 #}
-<div{{attributes.addClass('toolbar')}}>
-	<nav{{toolbar_attributes.addClass('toolbar-bar')}}>
+<div{{attributes.addClass("toolbar")}}>
+	<nav{{toolbar_attributes.addClass("toolbar-bar", "clearfix")}}>
 		<h2 class="visually-hidden">{{toolbar_heading}}</h2>
 		{% for key, tab in tabs %}
 			{% set tray = trays[key] %}
-			<div{{tab.attributes.addClass('toolbar-tab')}}>
+			<div{{tab.attributes.addClass("toolbar-tab")}}>
 				{{tab.link}}
 				{% spaceless %}
 					<div{{tray.attributes}}>

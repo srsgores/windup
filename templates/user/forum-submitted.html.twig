@@ -15,7 +15,7 @@
  */
 #}
 {% if time %}
-	<span>{% trans %}By {{author}} {{time}} ago{% endtrans %}</span>
+	<span class="submitted">{% trans %}By {{author}} <time>{{time}}</time> ago{% endtrans %}</span>
 {% else %}
-	{{'n/a'|t}}
+	{{"n/a"|t}}
 {% endif %}

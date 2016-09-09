@@ -5,20 +5,13 @@
  *
  * Available variables:
  * - node: The node entity with limited access to object properties and methods.
- *   Only method names starting with "get", "has", or "is" and a few common
- *   methods such as "id", "label", and "bundle" are available. For example:
- *   - node.getCreatedTime() will return the node creation timestamp.
- *   - node.hasField('field_example') returns TRUE if the node bundle includes
- *     field_example. (This does not indicate the presence of a value in this
- *     field.)
- *   - node.isPublished() will return whether the node is published or not.
- *   Calling other methods, such as node.delete(), will result in an exception.
- *   See \Drupal\node\Entity\Node for a full list of public properties and
- *   methods for the node object.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
  * - label: The title of the node.
  * - content: All node items. Use {{ content }} to print them all,
  *   or print a subset such as {{ content.field_example }}. Use
- *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   {{ content|without("field_example") }} to temporarily suppress the printing
  *   of a given child element.
  * - author_picture: The node author user entity, rendered using the "compact"
  *   view mode.
@@ -54,8 +47,8 @@
  * - title_suffix: Additional output populated by modules, intended to be
  *   displayed after the main title tag that appears in the template.
  * - view_mode: View mode; for example, "teaser" or "full".
- * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
- * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - teaser: Flag for the teaser state. Will be true if view_mode is "teaser".
+ * - page: Flag for the full page state. Will be true if view_mode is "full".
  * - readmore: Flag for more state. Will be true if the teaser content of the
  *   node cannot hold the main body content.
  * - logged_in: Flag for authenticated user status. Will be true when the
@@ -71,13 +64,16 @@
  */
 #}
 {% set classes = [
-'node',
-'node--type-' ~ node.bundle|clean_class,
-node.isPromoted() ? 'node--promoted',
-node.isSticky() ? 'node--sticky',
-not node.isPublished() ? 'node--unpublished',
-view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-] %}
+		"node",
+		"node--type-" ~ node.bundle|clean_class,
+		node.isPromoted() ? "node--promoted",
+		node.isSticky() ? "node--sticky",
+		not node.isPublished() ? "node--unpublished",
+		view_mode ? "node--view-mode-" ~ view_mode|clean_class,
+	]
+%}
+{{attach_library("classy/node")}}
+
 <article{{attributes.addClass(classes)}}>
 
 	{{title_prefix}}
@@ -89,16 +85,15 @@ view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
 	{{title_suffix}}
 
 	{% if display_submitted %}
-		<footer>
-			{{author_picture}}
-			<div{{author_attributes}}>
+		<footer class="comment-submitted">
+			<div{{author_attributes.addClass("node__submitted")}}>
 				{% trans %}Submitted by {{author_name}} on {{date}}{% endtrans %}
 				{{metadata}}
 			</div>
 		</footer>
 	{% endif %}
 
-	<div{{content_attributes}}>
+	<div{{content_attributes.addClass("node__content")}}>
 		{{content}}
 	</div>
 

@@ -12,10 +12,10 @@
  *   - title: The title of the page.
  *   - name: The name of the site.
  *   - slogan: The slogan of the site.
- * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page_top: Initial rendered markup. This should be printed before "page".
  * - page: The rendered page markup.
  * - page_bottom: Closing rendered markup. This variable should be printed after
- *   'page'.
+ *   "page".
  * - db_offline: A flag indicating if the database is offline.
  * - placeholder_token: The token for generating head, css, js and js-bottom
  *   placeholders.
@@ -23,17 +23,23 @@
  * @see template_preprocess_html()
  */
 #}
+{% set body_classes = [
+	logged_in ? "user-logged-in",
+	not root_path ? "path-frontpage" : "path-" ~ root_path|clean_class,
+	node_type ? "page-node-type-" ~ node_type|clean_class,
+	db_offline ? "db-offline",
+] %}
 <!DOCTYPE html>
 <html{{html_attributes}}>
 	<head>
 		<head-placeholder token="{{placeholder_token|raw}}">
-			<title>{{head_title|safe_join(' | ')}}</title>
-			<css-placeholder token="{{placeholder_token|raw}}">
-				<js-placeholder token="{{placeholder_token|raw}}">
-					</head>
-	<body{{attributes}}>
-		<a href="#main-content" class="visually-hidden focusable">
-			{{'Skip to main content'|t}}
+		<title>{{head_title|safe_join(" | ")}}</title>
+		<css-placeholder token="{{placeholder_token|raw}}">
+		<js-placeholder token="{{placeholder_token|raw}}">
+	</head>
+	<body{{attributes.addClass(body_classes)}} role="document">
+		<a href="#main-content" class="visually-hidden focusable skip-link">
+			{{"Skip to main content"|t}}
 		</a>
 		{{page_top}}
 		{{page}}

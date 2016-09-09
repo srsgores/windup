@@ -40,8 +40,8 @@
 		{%- endif -%}
 	{%- endif -%}
 	<ul{{attributes}}>
-		{%- for item in links -%}
-			<li{{item.attributes}}>
+		{%- for key, item in links -%}
+			<li{{item.attributes.addClass(key|clean_class)}}>
 				{%- if item.link -%}
 					{{item.link}}
 				{%- elseif item.text_attributes -%}

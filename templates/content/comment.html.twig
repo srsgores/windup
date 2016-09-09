@@ -10,24 +10,24 @@
  *   {{ content.field_example }}. Use the following code to temporarily suppress
  *   the printing of a given child element:
  *   @code
- *   {{ content|without('field_example') }}
+ *   {{ content|without("field_example") }}
  *   @endcode
  * - created: Formatted date and time for when the comment was created.
  *   Preprocess functions can reformat it by calling format_date() with the
- *   desired parameters on the 'comment.created' variable.
+ *   desired parameters on the "comment.created" variable.
  * - changed: Formatted date and time for when the comment was last changed.
  *   Preprocess functions can reformat it by calling format_date() with the
- *   desired parameters on the 'comment.changed' variable.
+ *   desired parameters on the "comment.changed" variable.
  * - permalink: Comment permalink.
  * - submitted: Submission information created from author and created
  *   during template_preprocess_comment().
- * - user_picture: The comment author's profile picture.
+ * - user_picture: The comment author"s profile picture.
  * - status: Comment status. Possible values are:
  *   unpublished, published, or preview.
  * - title: Comment title, linked to the comment.
  * - attributes: HTML attributes for the containing element.
  *   The attributes.class may contain one or more of the following classes:
- *   - comment: The current template type; e.g., 'theming hook'.
+ *   - comment: The current template type; e.g., "theming hook".
  *   - by-anonymous: Comment by an unregistered user.
  *   - by-{entity-type}-author: Comment by the author of the parent entity,
  *     eg. by-node-author.
@@ -52,7 +52,7 @@
  * - parent_title: Equivalent to title for the parent comment.
  * - parent_permalink: Equivalent to permalink for the parent comment.
  * - parent: A text string of parent comment submission information created from
- *   'parent_author' and 'parent_created' during template_preprocess_comment().
+ *   "parent_author" and "parent_created" during template_preprocess_comment().
  *   This information is presented to help screen readers follow lengthy
  *   discussion threads. You can hide this from sighted users using the class
  *   visually-hidden.
@@ -64,44 +64,45 @@
  * @see template_preprocess_comment()
  */
 #}
+{% if threaded %}
+	{{attach_library("classy/indented")}}
+{% endif %}
 {% set classes = [
-'comment',
-'comment--' ~ commented_entity.getEntityTypeId(),
-'js-comment',
-status != 'comment--published' ? status,
-comment.owner.anonymous ? 'comment--by-anonymous',
-author_id and author_id == commented_entity.getOwnerId() ? 'comment--by-' ~ commented_entity.getEntityTypeId() ~ '-author'
+	"comment",
+	"js-comment",
+	status != "published" ? status,
+	comment.owner.anonymous ? "by-anonymous",
+	author_id and author_id == commented_entity.getOwnerId() ? "by-" ~ commented_entity.getEntityTypeId() ~ "-author",
 ] %}
 <article{{attributes.addClass(classes)}}>
+
 	{#
 	  Hide the "new" indicator by default, let a piece of JavaScript ask the
 	  server which comments are new for the user. Rendering the final "new"
 	  indicator here would break the render cache.
 	#}
+
 	<mark class="hidden" data-comment-timestamp="{{new_indicator_timestamp}}"></mark>
 
-	<footer class="comment__footer">
-		<div class="comment__author-image">{{user_picture}}</div>
-		<p class="comment__meta">{{submitted}}</p>
+	<footer class="comment_footer">
+		<div class="comment__author-image">
+			{{user_picture}}
+			{{permalink}}
+			{% if parent %}
+				<p class="parent visually-hidden">{{parent}}</p>
+			{% endif %}
+		</div>
 
-		{#
-		  Indicate the semantic relationship between parent and child comments for
-		  accessibility. The list is difficult to navigate in a screen reader
-		  without this information.
-		#}
-		{% if parent %}
-			<p class="visually-hidden">{{parent}}</p>
-		{% endif %}
-
-		{{permalink}}
+		<div class="author-comments">
+			<p class="comment-submitted">{{submitted}}</p>
+			<div{{content_attributes.addClass("content")}}>
+				{% if title %}
+					{{title_prefix}}
+					<h3{{title_attributes}}>{{title}}</h3>
+					{{title_suffix}}
+				{% endif %}
+				{{content}}
+			</div>
+		</div>
 	</footer>
-
-	<div{{content_attributes.addClass('comment__content')}}>
-		{% if title %}
-			{{title_prefix}}
-			<h3{{title_attributes.addClass('comment__title')}}>{{title}}</h3>
-			{{title_suffix}}
-		{% endif %}
-		{{content}}
-	</div>
 </article>
